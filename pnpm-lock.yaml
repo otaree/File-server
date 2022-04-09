@@ -11,6 +11,7 @@ specifiers:
   multer: ^1.4.2
   nanoid: ^3.1.23
   nodemon: ^2.0.7
+  slugify: ^1.6.0
   winston: ^3.3.3
   winston-daily-rotate-file: ^4.5.5
 
@@ -23,6 +24,7 @@ dependencies:
   morgan: 1.10.0
   multer: 1.4.2
   nanoid: 3.1.23
+  slugify: 1.6.0
   winston: 3.3.3
   winston-daily-rotate-file: 4.5.5_winston@3.3.3
 
@@ -1807,6 +1809,11 @@ packages:
       astral-regex: 2.0.0
       is-fullwidth-code-point: 3.0.0
     dev: true
+
+  /slugify/1.6.0:
+    resolution: {integrity: sha512-FkMq+MQc5hzYgM86nLuHI98Acwi3p4wX+a5BO9Hhw4JdK4L7WueIiZ4tXEobImPqBz2sVcV0+Mu3GRB30IGang==}
+    engines: {node: '>=8.0.0'}
+    dev: false
 
   /sparse-bitfield/3.0.3:
     resolution: {integrity: sha1-/0rm5oZWBWuks+eSqzM004JzyhE=}

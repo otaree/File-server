@@ -120,3 +120,4 @@ dist
 # dirs to ignore
 uploads
 logs
+.sh

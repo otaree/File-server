@@ -1,0 +1,286 @@
+server {
+	listen 80;
+	listen [::]:80;
+        gzip on;
+        gzip_types
+        text/plain
+        text/css
+        text/js
+        text/xml
+        text/javascript
+        application/javascript
+        application/x-javascript
+        application/json
+        application/xml
+        application/xml+rss;
+
+        root /var/www/iggc.org.in/main/html;
+        index index.html index.htm index.nginx-debian.html;
+
+	server_name   iggc.org.in www.iggc.org.in;
+
+        location / {
+              try_files $uri $uri/ /index.html;
+        }
+	location /public {
+                proxy_pass http://localhost:5000;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+        }
+        
+        location /admin {
+		proxy_pass http://localhost:5000;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+		client_max_body_size 100M;
+        }
+        location /student {
+                proxy_pass http://localhost:5000;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+        }
+        location /info {
+                proxy_pass http://localhost:5000;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+        }
+
+ location /api {
+                proxy_pass http://localhost:5000;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+                client_max_body_size 100M;
+        }
+}
+
+
+
+server {
+	listen 80;
+	listen [::]:80;	
+	gzip on;
+        gzip_types
+        text/plain
+        text/css
+        text/js
+        text/xml
+        text/javascript
+        application/javascript
+        application/x-javascript
+        application/json
+        application/xml
+        application/xml+rss;
+
+        root /var/www/iggc.org.in/admin/html;
+        index index.html index.htm index.nginx-debian.html;
+
+	server_name admin.iggc.org.in;
+
+        location / {
+		try_files $uri $uri/ /index.html;
+                #try_files $uri $uri $uri/ =404;
+        }
+}
+
+
+server {
+	listen 80;
+	listen [::]:80;
+	gzip on;
+	gzip_types
+        text/plain
+        text/css
+        text/js
+        text/xml
+        text/javascript
+        application/javascript
+        application/x-javascript
+        application/json
+        application/xml
+        application/xml+rss;
+
+        root /var/www/iggc.org.in/admission/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name admission.iggc.org.in;
+
+        location / {
+                try_files $uri $uri/ /index.html;
+        }
+
+}
+
+server {
+  listen 80;
+  listen [::]:80;
+  root /var/www/iggc.org.in/html;
+  index index.html index.htm index.nginx-debian.html;
+
+  server_name api.iggc.org.in;
+
+  location / {
+	proxy_pass http://localhost:8000;
+
+	
+        proxy_redirect off;
+	proxy_http_version 1.1;
+	proxy_set_header Upgrade $http_upgrade;
+	proxy_set_header Connection 'upgrade';
+	proxy_set_header Host $host;
+	proxy_cache_bypass $http_upgrade;
+	}
+
+}
+
+
+
+
+server {
+	listen 80;
+	listen [::]:80;
+        gzip on;
+        gzip_types
+        text/plain
+        text/css
+        text/js
+        text/xml
+        text/javascript
+        application/javascript
+        application/x-javascript
+        application/json
+        application/xml
+        application/xml+rss;
+
+        root /var/www/iggc.org.in/new_admin/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name new-admin.iggc.org.in;
+
+        location / {
+                try_files $uri /index.html;
+        }
+
+}  
+
+
+
+server {
+        listen 80;
+	listen [::]:80; 
+	gzip on;
+        gzip_types
+        text/plain
+        text/css
+        text/js
+        text/xml
+        text/javascript
+        application/javascript
+        application/x-javascript
+        application/json
+        application/xml
+        application/xml+rss;
+
+        root /var/www/iggc.org.in/test_admission/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name test-admission.iggc.org.in;
+
+        location / {
+                try_files $uri $uri/ /index.html;
+        }
+}
+
+
+
+server {
+      	listen 80;
+	listen [::]:80; 
+	gzip on;
+        gzip_types
+        text/plain
+        text/css
+        text/js
+        text/xml
+        text/javascript
+        application/javascript
+        application/x-javascript
+        application/json
+        application/xml
+        application/xml+rss;
+
+        root /var/www/iggc.org.in/other-institution-admin/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name other-institution-admin.iggc.org.in;
+
+        location / {
+                try_files $uri $uri/ /index.html;
+        }
+
+}
+
+
+
+
+server {
+	listen 80;
+	listen [::]:80;
+        gzip on;
+        gzip_types
+        text/plain
+        text/css
+        text/js
+        text/xml
+        text/javascript
+        application/javascript
+        application/x-javascript
+        application/json
+        application/xml
+        application/xml+rss;
+
+        root /var/www/iggc.org.in/other-institution-admission/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name other-institution-admission.iggc.org.in;
+
+        location / {
+                try_files $uri $uri/ /index.html;
+        }
+   }
+
+  
+
+ server {
+    listen 80;
+    listen [::]:80;
+    root /var/www/iggc.org.in/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name upload.iggc.org.in;
+
+    location / {
+        proxy_pass http://localhost:4041;
+        proxy_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
